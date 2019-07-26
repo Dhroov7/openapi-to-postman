@@ -434,8 +434,8 @@ describe('UTILITY FUNCTION TESTS ', function () {
           }
         },
         retValExamples = Utils.convertToPmBodyData(bodyWithExamples, 'application/json');
-      expect(retValExamples.foo).to.equal(1);
-      expect(retValExamples.bar).to.equal(2);
+      expect(retValExamples[0].foo).to.equal(1);
+      expect(retValExamples[0].bar).to.equal(2);
     });
 
     it('should work for examples with a $ref for non-json requests', function() {
@@ -1374,6 +1374,7 @@ describe('UTILITY FUNCTION TESTS ', function () {
           result, resultBody;
         Utils.options.schemaFaker = true;
         result = Utils.convertToPmBody(requestBody);
+        console.log(result, 'result')
         resultBody = (result.body.raw);
         expect(resultBody).to.equal('"text/plain description"');
         expect(result.contentHeader).to.deep.include(
